@@ -184,18 +184,39 @@ import line21Img from '../assets/Line 21.png';
 
 const ContactSection = () => {
   return (
-    <section className="w-full py-6 pb-20 px-4 md:px-6 relative overflow-hidden" style={{
+    // <section className="w-full py-6 pb-50 px-4 md:px-6 relative overflow-hidden" style={{
+    <section className="w-full py-6 pb-10 md:pb-20 lg:pb-40 px-4 md:px-6 relative overflow-hidden" style={{
       background: 'linear-gradient(180deg, #FFFFFF 0%, #E6FBA2 100%)'
     }}>
 
       {/* Absolute Logo - Desktop: left edge aligned with form card, Mobile: smaller, left edge */}
-      <div
+      {/* <div
         className="absolute pointer-events-none z-0 left-[-15px] md:left-[0px]"
         style={{
-          // Mobile: left flush, vertically near top of form area
           top: '45px',
         }}
+      > */}
+
+      <div
+        className="
+    absolute
+    pointer-events-none
+    z-0
+
+    left-[-15px]
+    top-[45px]
+
+    md:left-[-24px]
+    md:top-[80px]
+
+    lg:left-[-35px]
+    lg:top-[15px]
+
+    xl:left-[-53px]
+    xl:top-[0px]
+  "
       >
+
         {/* Mobile size */}
         <motion.img
           initial={{ opacity: 0, x: -80 }}
@@ -206,14 +227,32 @@ const ContactSection = () => {
           className="block md:hidden w-[110px] h-[170px] object-contain"
           style={{ transform: 'rotate(-164.83deg)' }}
         />
+
         {/* Desktop size */}
-        <motion.img
+        {/* <motion.img
           initial={{ opacity: 0, x: -80 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           src={logo3d}
           alt="3D Logo Background"
           className="hidden md:block object-contain"
+          style={{ transform: 'rotate(-164.83deg)' }}
+        /> */}
+
+        {/* Tablet + Laptop + Desktop */}
+        <motion.img
+          initial={{ opacity: 0, x: -80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          src={logo3d}
+          alt="3D Logo Background"
+          className="
+    hidden md:block
+    md:w-[180px] md:h-[280px]
+    lg:w-[250px] lg:h-[380px]
+    xl:w-[315px] xl:h-[487px]
+    object-contain
+  "
           style={{ transform: 'rotate(-164.83deg)' }}
         />
       </div>

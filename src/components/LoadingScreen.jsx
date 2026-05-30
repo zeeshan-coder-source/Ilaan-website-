@@ -88,7 +88,7 @@ const LoadingScreen = () => {
         className="pb-12"
       >
         <span className="text-[12px] md:text-[14px] tracking-[0.4em] font-bold text-black uppercase opacity-60">
-          ILAAN STUDIO
+          ILAAN
         </span>
       </motion.div>
     </motion.div>

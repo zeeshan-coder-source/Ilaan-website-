@@ -62,7 +62,7 @@ const Marquee = ({ logos }) => {
       gsap.set(track, { xPercent: 0 });
       animRef.current = gsap.to(track, {
         xPercent: -50,
-        duration: 8,
+        duration: 35, // Slower speed for slow but smooth scrolling
         ease: 'none',
         repeat: -1,
         force3D: true,
@@ -90,20 +90,20 @@ const Marquee = ({ logos }) => {
     };
   }, [logos]);
 
-  const repeated = [...logos, ...logos, ...logos, ...logos];
+  const repeated = [...logos, ...logos, ...logos, ...logos, ...logos, ...logos];
 
   return (
-    <div className="w-full overflow-hidden py-2 md:py-24 mt-0 mb-2 md:mt-2 md:mb-6">
+    <div className="w-full overflow-hidden py-4 md:py-16 mt-0 mb-2 md:mt-2 md:mb-6">
       <div
         ref={trackRef}
-        className="flex items-center whitespace-nowrap w-max will-change-transform gap-[40px] md:gap-[100px]"
+        className="flex items-center whitespace-nowrap w-max will-change-transform gap-[60px] md:gap-[100px]"
       >
         {repeated.map((logo, i) => (
           <img
             key={i}
             src={logo}
             alt="Partner"
-            className="h-[200px] md:h-[400px] lg:h-[600px] my-0 md:-my-[100px] lg:-my-[200px] mx-0 md:-mx-[30px] lg:-mx-[60px] w-auto max-w-none object-contain opacity-90 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+            className="h-[100px] md:h-[200px] lg:h-[300px] w-auto max-w-none object-contain opacity-90 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
           />
         ))}
       </div>
@@ -119,11 +119,11 @@ const SocialLink = ({ link }) => {
   return (
     <a
       href="#"
-      className="font-bold uppercase inline-block relative overflow-hidden text-[10px] sm:text-[11px] md:text-[17px] whitespace-nowrap"
+      className="font-bold uppercase inline-block relative overflow-hidden text-[10px] sm:text-[11px] md:text-[25px] whitespace-nowrap"
       style={{
         lineHeight: '149.7%',
         letterSpacing: '0%',
-        fontFamily: "'Poppins', sans-serif",
+        fontFamily: "'Falcon',Falcon",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -280,10 +280,12 @@ const Socials = () => {
       const mm = gsap.matchMedia();
 
       mm.add({
-        isMobile: "(max-width: 767px)",
-        isDesktop: "(min-width: 768px)"
+        isMobile: "(max-width: 639px)",
+        isTablet: "(min-width: 640px) and (max-width: 1023px)",
+        isLaptop: "(min-width: 1024px) and (max-width: 1439px)",
+        isDesktop: "(min-width: 1440px)"
       }, (context) => {
-        let { isMobile, isDesktop } = context.conditions;
+        let { isMobile, isTablet, isLaptop, isDesktop } = context.conditions;
 
         wrapperRefs.current.forEach((wrapper, i) => {
           const data = socialCardsData[i];
@@ -295,13 +297,31 @@ const Socials = () => {
 
           if (isMobile) {
             // Tighter fan spread for mobile
-            const mobileX = [-140, -75, -35, 0, 35, 75, 140];
-            const mobileY = [60, 30, 10, 0, 10, 30, 60];
-            const mobileRotate = [-18, -12, -6, 0, 6, 12, 18];
+            const mobileX = [-110, -65, -30, 0, 30, 65, 110];
+            const mobileY = [45, 20, 5, 0, 5, 20, 45];
+            const mobileRotate = [-16, -11, -5, 0, 5, 11, 16];
 
             targetX = mobileX[i];
             targetY = mobileY[i];
             targetRotate = mobileRotate[i];
+          } else if (isTablet) {
+            // Custom spread for tablets to keep cards within screen boundaries
+            const tabletX = [-200, -130, -65, 0, 65, 130, 200];
+            const tabletY = [60, 30, 10, 0, 10, 30, 60];
+            const tabletRotate = [-16, -11, -5, 0, 5, 11, 16];
+
+            targetX = tabletX[i];
+            targetY = tabletY[i];
+            targetRotate = tabletRotate[i];
+          } else if (isLaptop) {
+            // Custom spread for laptop sized displays to keep cards within screen boundaries
+            const laptopX = [-380, -250, -125, 0, 125, 250, 380];
+            const laptopY = [100, 50, 15, 0, 15, 50, 100];
+            const laptopRotate = [-20, -14, -7, 0, 7, 14, 20];
+
+            targetX = laptopX[i];
+            targetY = laptopY[i];
+            targetRotate = laptopRotate[i];
           }
 
           gsap.fromTo(
@@ -358,13 +378,18 @@ const Socials = () => {
             className="mb-4 md:mb-12 object-contain w-[40px] h-[40px] md:w-[55.37px] md:h-[55.37px]"
             draggable={false}
           />
-          <img
-            src={headingImg}
-            alt="WHAT'S UP ON SOCIALS"
-            className="w-[227px] h-[73px] md:w-full md:h-auto object-contain pointer-events-none select-none"
-            style={{ maxWidth: '568px' }}
-            draggable={false}
-          />
+          <div
+            className="pointer-events-none select-none text-center leading-none font-falcon font-extrabold uppercase text-black"
+            style={{
+              fontFamily: "'Falcon', sans-serif",
+              fontSize: 'clamp(48px, 8vw, 96px)',
+              lineHeight: 1.05,
+              maxWidth: '600px',
+              letterSpacing: '-0.03em',
+            }}
+          >
+            WHAT'S UP<br />ON SOCIALS
+          </div>
         </div>
 
         {/* ── Fan Cards ───────────────────────────────────────────────────── */}
@@ -377,7 +402,7 @@ const Socials = () => {
           style={{ height: 'clamp(380px, 55vw, 680px)' }}
         >
 
-        {/* <div
+          {/* <div
           className="relative w-full flex items-center justify-center"
           style={{ height: 'clamp(200px, 250px, 450px)' }}
         > */}
@@ -419,21 +444,21 @@ const Socials = () => {
         >
           <div className="flex items-center justify-center gap-3 mb-8 md:mb-10 w-[252.82px] md:w-auto h-[54.91px] md:h-auto mx-auto">
             <span
-              className="text-[23px] md:text-[40px] leading-[43.5px] md:leading-none"
+              className="text-[23px] md:text-[55px] leading-[43.5px] md:leading-none"
               style={{
                 fontFamily: "'Falcon', sans-serif",
                 color: '#000',
                 textTransform: 'uppercase',
               }}
             >
-              FOLLOW
+              FOLLOW ILAAN
             </span>
-            <img
+            {/* <img
               src={ilaanTextImg}
               alt="ILAAN"
               className="w-[85px] md:w-[123px] h-auto object-contain"
               draggable={false}
-            />
+            /> */}
           </div>
           <div className="flex flex-nowrap items-center justify-center gap-[13px] sm:gap-[10px] md:gap-8 w-full px-1 md:px-0">
             {socialLinks.map((link, idx) => (

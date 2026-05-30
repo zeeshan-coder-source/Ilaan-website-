@@ -16,11 +16,11 @@ import head2 from '../assets/Group 124.png';
 const Card = ({ titleImg, description, image, bgColor, textColor, showLogin, btnColor, btnTextColor }) => {
   return (
     <div
-      className={`service-card relative group w-full h-[360px] md:h-[805px] rounded-[2.5rem] md:rounded-[4rem] rounded-tl-none md:rounded-tl-none pt-5 p-5 md:pt-14 md:p-16 flex flex-col justify-start overflow-hidden shadow-2xl ${bgColor} ${textColor} cursor-pointer origin-center will-change-transform`}
+      className={`service-card relative group w-full h-[360px] sm:h-[480px] md:h-[620px] lg:h-[600px] xl:h-[805px] rounded-[2.5rem] md:rounded-[4rem] rounded-tl-none md:rounded-tl-none pt-5 p-5 md:pt-14 md:p-16 flex flex-col justify-start overflow-hidden shadow-2xl ${bgColor} ${textColor} cursor-pointer origin-center will-change-transform`}
     >
       <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
       <div className="relative z-10 w-full">
-        <div className="mb-3 md:mb-6 h-6 md:h-16 w-auto flex items-center justify-start">
+        <div className="mb-3 md:mb-6 h-6 sm:h-8 md:h-12 lg:h-14 xl:h-16 w-auto flex items-center justify-start">
           <img src={titleImg} alt="Heading" className="h-full w-auto object-contain" />
         </div>
 
@@ -28,7 +28,7 @@ const Card = ({ titleImg, description, image, bgColor, textColor, showLogin, btn
           <img src={image} alt="Card visual" className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-700" />
         </div>
 
-        <p className="text-[11px] md:text-[27.5px] font-poppins font-normal leading-[1.5] md:leading-[1.93] tracking-normal mb-2 md:mb-14 opacity-90 max-w-[700px] text-left">
+        <p className="text-[11px] sm:text-[13px] md:text-[15px] lg:text-[18px] xl:text-[22px] font-poppins font-normal leading-[1.5] md:leading-[1.7] tracking-normal mb-2 sm:mb-4 md:mb-6 lg:mb-8 xl:mb-12 opacity-90 max-w-[700px] text-left">
           {description}
         </p>
 
@@ -37,12 +37,12 @@ const Card = ({ titleImg, description, image, bgColor, textColor, showLogin, btn
 
       <div className={`relative z-10 mt-auto flex flex-wrap gap-2 md:gap-4 items-center ${showLogin ? 'justify-center md:justify-end' : 'justify-end'} w-full pb-1 md:pb-2`}>
         {showLogin && (
-          <button className="flex items-center justify-center gap-1 w-[125px] h-[30px] md:w-auto md:h-auto md:px-8 md:py-3.5 border border-black rounded-full font-bold hover:bg-black/5 transition-all text-[10px] md:text-base lg:text-lg whitespace-nowrap">
+          <button className="flex items-center justify-center gap-1 w-[125px] h-[30px] md:w-auto md:h-auto md:px-8 md:py-3.5 border border-black rounded-full font-bold hover:bg-black/5 transition-all text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg whitespace-nowrap">
             <User size={22} className="w-3 h-3 md:w-[22px] md:h-[22px]" /> Login <ChevronRight size={20} className="w-3 h-3 md:w-5 md:h-5" />
           </button>
         )}
         <button
-          className={`flex items-center justify-center gap-1 w-[125px] h-[30px] md:w-auto md:h-auto md:px-10 md:py-3.5 rounded-full font-bold hover:opacity-90 transition-all text-[10px] md:text-base lg:text-lg whitespace-nowrap ${btnColor || 'bg-black'} ${btnTextColor || 'text-white'}`}
+          className={`flex items-center justify-center gap-1 w-[125px] h-[30px] md:w-auto md:h-auto md:px-10 md:py-3.5 rounded-full font-bold hover:opacity-90 transition-all text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg whitespace-nowrap ${btnColor || 'bg-black'} ${btnTextColor || 'text-white'}`}
         >
           Learn more <ChevronRight size={20} className="w-3 h-3 md:w-5 md:h-5" />
         </button>

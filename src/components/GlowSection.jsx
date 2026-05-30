@@ -134,36 +134,39 @@ const GlowSection = () => {
             />
           </div>
 
-          <span 
+          <span
             className="text-[14px] font-falcon font-bold text-[#D9FF00] tracking-[0.2em] uppercase"
             style={{ fontFamily: 'Falcon, sans-serif' }}
           >
-            ILAAN STUDIO
+            ILAAN
           </span>
         </div>
 
 
+
+
+
         {/* Layer 1: BACKGROUND TEXT SLIDER (Responsive) */}
-        <div className="absolute bottom-16 md:bottom-auto md:inset-0 z-10 w-full md:h-full flex flex-col items-center md:justify-center pointer-events-none overflow-hidden">
-          {/* Top Green Line: Continuous Loop */}
+        {/* <div className="absolute bottom-16 md:bottom-auto md:inset-0 z-10 w-full md:h-full flex flex-col items-center md:justify-center pointer-events-none overflow-hidden">
+          
           <div className="headline-top whitespace-nowrap flex items-center will-change-transform">
             <div className="flex items-center">
               {[1, 2, 3, 4].map((i) => (
                 <span
                   key={`top-${i}`}
-                  className="text-[36px] md:text-[100px] font-falcon font-semibold text-[#D9FF00] tracking-tighter uppercase leading-[1.1] mr-6 md:mr-10"
+                  className="text-[42px] md:text-[135px] font-falcon font-semibold text-[#D9FF00] tracking-tighter uppercase leading-[1.1] mr-6 md:mr-10"
                   style={{ fontFamily: 'Falcon, sans-serif' }}
                 >
                   DATA CLARITY WITHOUT COMPLEXITY AND
                 </span>
               ))}
             </div>
-            {/* Duplicate for seamless loop */}
+            
             <div className="flex items-center">
               {[1, 2, 3, 4].map((i) => (
                 <span
                   key={`top-dup-${i}`}
-                  className="text-[36px] md:text-[100px] font-falcon font-semibold text-[#D9FF00] tracking-tighter uppercase leading-[1.1] mr-6 md:mr-10"
+                  className="text-[42px] md:text-[135px] font-falcon font-semibold text-[#D9FF00] tracking-tighter uppercase leading-[1.1] mr-6 md:mr-10"
                   style={{ fontFamily: 'Falcon, sans-serif' }}
                 >
                   DATA CLARITY WITHOUT COMPLEXITY AND
@@ -172,7 +175,7 @@ const GlowSection = () => {
             </div>
           </div>
 
-          {/* Bottom White Line: Continuous Loop */}
+         
           <div className="headline-bottom whitespace-nowrap flex items-center mt-0 md:mt-[-10px] will-change-transform">
             <div className="flex items-center">
               {[1, 2, 3, 4].map((i) => (
@@ -181,7 +184,7 @@ const GlowSection = () => {
                 </span>
               ))}
             </div>
-            {/* Duplicate for seamless loop */}
+           
             <div className="flex items-center">
               {[1, 2, 3, 4].map((i) => (
                 <span key={`bottom-dup-${i}`} className="text-[36px] md:text-[100px] font-poppins font-semibold text-white tracking-tighter uppercase leading-[1.1] mr-6 md:mr-10">
@@ -190,7 +193,54 @@ const GlowSection = () => {
               ))}
             </div>
           </div>
+        </div> */}
+
+        {/* Layer 1: BACKGROUND TEXT SLIDER (Responsive) */}
+        <div className="absolute bottom-16 md:bottom-auto md:inset-0 z-10 w-full md:h-full flex flex-col items-center md:justify-center pointer-events-none overflow-hidden">
+
+          {/* Top Green Line */}
+          <div className="w-full overflow-hidden">
+            <div
+              className="flex whitespace-nowrap will-change-transform"
+              // style={{ animation: 'scrollLeft 40s linear infinite', width: 'max-content' }}
+              style={{ animation: 'scrollRight 70s linear infinite', width: 'max-content' }}
+            >
+              {[...Array(8)].map((_, i) => (
+                <span
+                  key={`top-${i}`}
+                  className="text-[42px] md:text-[135px] font-semibold text-[#D9FF00] tracking-tighter uppercase leading-[1.1] mr-6 md:mr-10"
+                  style={{ fontFamily: 'Falcon, sans-serif' }}
+                >
+                  DATA CLARITY WITHOUT COMPLEXITY AND
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom White Line */}
+          <div className="w-full overflow-hidden mt-0 md:mt-[-10px]">
+            <div
+              className="flex whitespace-nowrap will-change-transform"
+              // style={{ animation: 'scrollRight 50s linear infinite', width: 'max-content' }}
+              style={{ animation: 'scrollLeft 85s linear infinite', width: 'max-content' }}
+            >
+              {[...Array(8)].map((_, i) => (
+                <span
+                  key={`bottom-${i}`}
+                  className="text-[36px] md:text-[100px] font-semibold text-white tracking-tighter uppercase leading-[1.1] mr-6 md:mr-10"
+                  style={{ fontFamily: 'Poppins, sans-serif' }}
+                >
+                  EVERY ILAAN PLATFORM IS DESIGNED TO GIVE YOU EVERY
+                </span>
+              ))}
+            </div>
+          </div>
+
         </div>
+
+
+
+
 
         {/* Layer 2: FOREGROUND IMAGE */}
         <div

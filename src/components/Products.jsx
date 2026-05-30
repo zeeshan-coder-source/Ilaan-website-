@@ -18,7 +18,7 @@ import cardBg from '../assets/card-background.webp';
 
 const ProductCard = ({ title, image }) => (
   <div
-    className="product-card group relative flex flex-col justify-between p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] w-[74vw] max-w-[370px] md:w-full md:max-w-[508.58px] h-[298px] md:h-[393.12px] cursor-pointer overflow-hidden mx-auto will-change-transform"
+    className="product-card group relative flex flex-col justify-between p-4 sm:p-5 md:p-8 lg:p-10 rounded-[2rem] md:rounded-[2.5rem] w-[74vw] max-w-[370px] md:w-full md:max-w-[508.58px] aspect-[370/298] md:aspect-[508/393] cursor-pointer overflow-hidden mx-auto will-change-transform"
     style={{
       backgroundImage: `url(${cardBg})`,
       backgroundSize: '100% 100%',
@@ -26,22 +26,22 @@ const ProductCard = ({ title, image }) => (
     }}
   >
     {/* Product Image */}
-    <div className="flex-grow flex items-center justify-center p-2 md:p-4">
+    <div className="flex-grow flex items-center justify-center p-2 md:p-4 min-h-0">
       <img
         src={image}
         alt={title}
-        className="max-h-[130px] md:max-h-[210px] max-w-[90%] w-auto object-contain transition-transform duration-500 group-hover:scale-110"
+        className="max-h-[110px] sm:max-h-[140px] md:max-h-[180px] lg:max-h-[210px] max-w-[90%] w-auto object-contain transition-transform duration-500 group-hover:scale-110"
       />
-    </div>
+    </div><br />
 
     {/* Text Content */}
-    <div className="mt-auto px-2">
-      <h3 className="text-base md:text-[22px] font-semibold text-black mb-1 md:mb-2 font-inter leading-tight">
+    <div className="mt-auto px-2 shrink-0">
+      <h3 className="text-[10px] sm:text-[11px] md:text-[16px] lg:text-[19px] font-semibold text-black mb-1 md:mb-2 font-inter leading-tight">
         {title}
       </h3>
 
-      <button className="flex items-center gap-2 text-[#2563eb] font-semibold text-xs md:text-sm transition-all group-hover:gap-3">
-        View Detail <ArrowRight size={16} className="translate-y-[1px]" />
+      <button className="flex items-center gap-1.5 text-[#2563eb] font-semibold text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px] transition-all group-hover:gap-2">
+        View Detail <ArrowRight className="translate-y-[0.5px] w-[8px] h-[8px] sm:w-[9px] sm:h-[9px] md:w-[10px] md:h-[10px] lg:w-[12px] lg:h-[12px]" />
       </button>
 
     </div>
@@ -65,18 +65,6 @@ const Products = () => {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      // Parallax background
-      gsap.to(bgRef.current, {
-        yPercent: 20,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1.5,
-        }
-      });
-
       // Title & Subtitle Sliding Effect
       gsap.fromTo(titleRef.current, 
         { x: -50 },
@@ -129,9 +117,15 @@ const Products = () => {
     <section ref={containerRef} className="relative w-full py-10 md:py-14 px-2 md:px-8 flex flex-col items-center overflow-hidden bg-[#eefc7e] mx-auto min-h-0 md:min-h-screen">
 
       {/* Background Image Overlay */}
-      <div ref={bgRef} className="absolute inset-0 z-0 opacity-40 pointer-events-none scale-110">
-        <img src={bgImage} alt="bg" className="w-full h-full object-cover" />
-      </div>
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          backgroundImage: `url(${bgImage})`,
+          backgroundSize: '100% 100%',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
 
       <div className="relative z-10 max-w-[1600px] w-full flex flex-col items-center">
 
@@ -191,7 +185,7 @@ const Products = () => {
 
         {/* CTA */}
         <div className="mt-10">
-          <button className="w-[150px] md:w-[260px] h-[36px] md:h-[50px] bg-gradient-to-r from-[#498625] to-[#9CBE34] text-white font-medium md:font-bold rounded-full flex items-center justify-center gap-1.5 md:gap-2 transition-all hover:scale-105 shadow-lg active:scale-95 text-[10px] md:text-base">
+          <button className="w-[150px] md:w-[260px] h-[36px] md:h-[50px] bg-black text-white font-medium md:font-bold rounded-full flex items-center justify-center gap-1.5 md:gap-2 transition-all hover:scale-105 shadow-lg active:scale-95 text-[10px] md:text-base">
             See More Products <ArrowRight className="w-[12px] h-[12px] md:w-[20px] md:h-[20px]" />
           </button>
         </div>
