@@ -35,7 +35,7 @@ const Card = ({ titleImg, description, image, bgColor, textColor, showLogin, btn
 
       </div>
 
-      <div className={`relative z-10 mt-auto flex flex-wrap gap-2 md:gap-4 items-center ${showLogin ? 'justify-center md:justify-end' : 'justify-end'} w-full pb-1 md:pb-2`}>
+      {/* <div className={`relative z-10 mt-auto flex flex-wrap gap-2 md:gap-4 items-center ${showLogin ? 'justify-center md:justify-end' : 'justify-end'} w-full pb-1 md:pb-2`}>
         {showLogin && (
           <button className="flex items-center justify-center gap-1 w-[125px] h-[30px] md:w-auto md:h-auto md:px-8 md:py-3.5 border border-black rounded-full font-bold hover:bg-black/5 transition-all text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg whitespace-nowrap">
             <User size={22} className="w-3 h-3 md:w-[22px] md:h-[22px]" /> Login <ChevronRight size={20} className="w-3 h-3 md:w-5 md:h-5" />
@@ -46,7 +46,7 @@ const Card = ({ titleImg, description, image, bgColor, textColor, showLogin, btn
         >
           Learn more <ChevronRight size={20} className="w-3 h-3 md:w-5 md:h-5" />
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

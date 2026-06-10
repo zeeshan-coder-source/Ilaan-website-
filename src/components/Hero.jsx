@@ -3,22 +3,46 @@ import { Menu, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import NavOverlay from './NavOverlay';
 
 // Assets import
 import bg1 from '../assets/bg.png';
+import bg2 from '../assets/1.png';
+import bg3 from '../assets/22.png';
+import bg4 from '../assets/content.png';
+
+// Mobile Assets import
+import bg1Mobile from '../assets/bg_mobile.png';
+import bg2Mobile from '../assets/1_mobile.png';
+import bg3Mobile from '../assets/22_mobile.png';
+import bg4Mobile from '../assets/content_mobile.png';
+
 import logoImage from '../assets/logo.png';
 import ilaanTextImage from '../assets/Ilaan.png';
 import studioTextImage from '../assets/Studio.png';
 
-const slides = [bg1, bg1, bg1, bg1];
+const desktopSlides = [bg1, bg2, bg3, bg4];
+const mobileSlides = [bg1Mobile, bg2Mobile, bg3Mobile, bg4Mobile];
 const SLIDE_DURATION = 4000; // ms per slide
 
 const Hero = () => {
   const [current, setCurrent] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const heroRef = useRef(null);
   const contentRef = useRef(null);
   const bgRef = useRef(null);
+
+  // Check screen size for responsiveness
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const slides = isMobile ? mobileSlides : desktopSlides;
 
   // Auto-advance slides
   useEffect(() => {
@@ -27,7 +51,7 @@ const Hero = () => {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, SLIDE_DURATION);
     return () => clearInterval(interval);
-  }, [current]);
+  }, [current, slides.length]);
 
   // Progress bar animation
   useEffect(() => {
@@ -94,6 +118,8 @@ const Hero = () => {
               src={slides[current]}
               alt="Hero Background"
               className="absolute inset-0 h-full w-full object-cover scale-125"
+              // className="absolute inset-0 h-full w-full object-cover"
+
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -113,7 +139,10 @@ const Hero = () => {
             />
           </div>
 
-          <button className="p-2 transition-transform active:scale-90 reveal-text">
+          <button 
+            onClick={() => setIsMenuOpen(true)}
+            className="p-2 transition-transform active:scale-90 hover:scale-105 cursor-pointer reveal-text"
+          >
             <Menu size={32} className="text-white" strokeWidth={3} />
           </button>
         </nav>
@@ -138,11 +167,11 @@ const Hero = () => {
               Creative &amp; Branding Solutions
             </p>
 
-            <div className="mt-6 md:mt-10 reveal-text">
+            {/* <div className="mt-6 md:mt-10 reveal-text">
               <button className="flex items-center justify-center px-8 py-3 md:px-12 md:py-4 bg-[#D9FF00] text-black font-semibold rounded-full hover:bg-[#c4e600] transition-all duration-300 text-[14px] md:text-lg shadow-md hover:scale-105 active:scale-95">
                 Learn More
               </button>
-            </div>
+            </div> */}
           </div>
         </main>
 
@@ -167,6 +196,13 @@ const Hero = () => {
         </div>
 
       </div>
+
+      {/* Navigation Overlay Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <NavOverlay isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
+        )}
+      </AnimatePresence>
     </div>
   );
 };

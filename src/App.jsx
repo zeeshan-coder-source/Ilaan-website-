@@ -13,6 +13,11 @@ import ContactSection from './components/ContactSection';
 import Background3D from './components/Background3D';
 import './App.css';
 
+// Navigation context and page views
+import { useNavigation } from './context/NavigationContext';
+import DigitalSignage from './pages/DigitalSignage';
+import ProductsPage from './pages/Products';
+
 import { AnimatePresence, motion } from 'framer-motion';
 import Lenis from 'lenis';
 import gsap from 'gsap';
@@ -22,6 +27,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const { currentPage } = useNavigation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -75,16 +81,22 @@ function App() {
             key="content"
             className="content-wrapper relative z-10"
           >
-            <Hero />
-            <ServiceSection />
-            <GlowSection />
-            <Products />
-            <CommercialDisplays />
-            {/* <SmartDisplays /> */}
-            {/* <SmartSignage /> */}
-            <Socials />
-            <ContactSection />
-            <Footer />
+            {currentPage === 'home' && (
+              <>
+                <Hero />
+                <ServiceSection />
+                <GlowSection />
+                <Products />
+                <CommercialDisplays />
+                <Socials />
+                <ContactSection />
+                <Footer />
+              </>
+            )}
+
+            {currentPage === 'digital-signage' && <DigitalSignage />}
+            
+            {currentPage === 'products' && <ProductsPage />}
           </div>
         )}
       </AnimatePresence>
