@@ -11,7 +11,6 @@ const NavOverlay = ({ isOpen, onClose }) => {
 
   const links = [
     { name: 'STUDIO', id: 'home' },
-    { name: 'DIGITAL SIGNAGE', id: 'digital-signage' },
     { name: 'PRODUCTS', id: 'products' },
     { name: 'LINK', id: 'link' },
     { name: 'MEDIA', id: 'media' },
@@ -19,7 +18,7 @@ const NavOverlay = ({ isOpen, onClose }) => {
 
   const handleLinkClick = (id) => {
     onClose();
-    if (id === 'home' || id === 'digital-signage' || id === 'products') {
+    if (id === 'home' || id === 'products') {
       navigateTo(id);
     }
   };

@@ -15,7 +15,6 @@ import './App.css';
 
 // Navigation context and page views
 import { useNavigation } from './context/NavigationContext';
-import DigitalSignage from './pages/DigitalSignage';
 import ProductsPage from './pages/Products';
 
 import { AnimatePresence, motion } from 'framer-motion';
@@ -93,8 +92,6 @@ function App() {
                 <Footer />
               </>
             )}
-
-            {currentPage === 'digital-signage' && <DigitalSignage />}
             
             {currentPage === 'products' && <ProductsPage />}
           </div>
