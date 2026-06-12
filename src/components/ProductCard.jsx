@@ -2,62 +2,69 @@ import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
 const ProductCard = ({ product, isCollection = false, onOpenDetails }) => {
+  if (isCollection) {
+    return (
+      <div
+        onClick={() => onOpenDetails && onOpenDetails(product)}
+        className="group relative flex flex-col justify-between rounded-[2.2rem] overflow-hidden bg-white cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(217,255,0,0.15)] shadow-md border border-gray-100 w-full lg:w-[407.55px] lg:h-[579.4px] min-h-[520px] mx-auto"
+      >
+        {/* Product Image Panel (White Background) */}
+        <div className="flex-grow flex items-center justify-center p-6 bg-white min-h-[240px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[370px] relative">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="max-h-[200px] sm:max-h-[240px] md:max-h-[280px] lg:max-h-[320px] max-w-[85%] w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+
+        {/* Info Panel (Solid Yellow-Green/Neon Background) */}
+        <div className="bg-[#D9FF00] p-6 sm:p-7 md:p-8 flex flex-col justify-between select-none h-[180px] sm:h-[190px] lg:h-[209px] shrink-0">
+          <div>
+            <div className="flex items-start justify-between gap-3">
+              <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-950 font-inter leading-tight text-left">
+                {product.name}
+              </h3>
+              
+              <button className="flex items-center gap-1.5 bg-black text-white hover:bg-gray-900 transition-colors text-[10px] lg:text-[11px] font-bold px-3.5 py-1.5 rounded-full shrink-0">
+                Read More
+                <ArrowRight size={10} />
+              </button>
+            </div>
+            
+            <p className="mt-3 text-xs lg:text-sm text-gray-900/80 font-poppins leading-snug text-left line-clamp-3">
+              {product.description}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Standard Catalog Card (isCollection = false)
   return (
     <div
       onClick={() => onOpenDetails && onOpenDetails(product)}
-      className={`group relative flex flex-col justify-between rounded-[2.2rem] overflow-hidden bg-white cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(217,255,0,0.15)] shadow-md border border-gray-100 w-full`}
+      className="group relative flex flex-col justify-between rounded-[2.2rem] overflow-hidden bg-white cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(217,255,0,0.15)] shadow-md border border-gray-100 w-full min-h-[380px] mx-auto"
     >
       {/* Product Image Panel (White Background) */}
-      <div className="flex-grow flex items-center justify-center p-6 sm:p-8 bg-white min-h-[160px] sm:min-h-[200px] md:min-h-[220px] relative">
+      <div className="flex-grow flex items-center justify-center p-6 bg-white min-h-[200px] sm:min-h-[240px] md:min-h-[260px] relative">
         <img
           src={product.image}
           alt={product.name}
-          className="max-h-[140px] sm:max-h-[160px] md:max-h-[180px] max-w-[85%] w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+          className="max-h-[160px] sm:max-h-[200px] md:max-h-[220px] max-w-[85%] w-auto object-contain transition-transform duration-500 group-hover:scale-105"
         />
-        
-        {/* Floating Category Badge */}
-        <span className="absolute top-4 left-4 bg-gray-900/10 text-gray-800 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-          {product.category}
-        </span>
       </div>
 
       {/* Info Panel (Solid Yellow-Green/Neon Background) */}
-      <div className="bg-[#D9FF00] p-5 md:p-6 flex flex-col justify-between select-none">
+      <div className="bg-[#D9FF00] p-6 sm:p-7 md:p-8 flex flex-col justify-between select-none h-[140px] sm:h-[150px] shrink-0">
         <div>
-          <div className="flex items-center justify-between gap-2">
-            <h3 className="text-base sm:text-lg font-bold text-gray-950 font-inter leading-tight">
-              {product.name}
-            </h3>
-            
-            {isCollection && (
-              <span className="bg-black text-[#D9FF00] text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wider shrink-0">
-                Top Seller
-              </span>
-            )}
-          </div>
+          <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-950 font-inter leading-tight text-left">
+            {product.name}
+          </h3>
           
-          <p className="mt-1 text-xs text-gray-900/80 font-poppins leading-snug line-clamp-2">
+          <p className="mt-2 text-xs lg:text-sm text-gray-900/80 font-poppins leading-snug text-left line-clamp-3">
             {product.description}
           </p>
-        </div>
-
-        {/* Read More / View Details action */}
-        <div className="mt-4 flex items-center justify-between border-t border-black/10 pt-3">
-          <span className="text-sm font-black text-gray-950">
-            ${product.price}
-          </span>
-          
-          {isCollection ? (
-            <button className="flex items-center gap-1 bg-black text-white hover:bg-gray-900 transition-colors text-[10px] font-extrabold uppercase px-3 py-1.5 rounded-full">
-              Read More
-              <ArrowRight size={10} />
-            </button>
-          ) : (
-            <button className="flex items-center gap-1 text-black font-extrabold text-[10px] hover:translate-x-1 transition-transform uppercase">
-              View Details
-              <ArrowRight size={10} />
-            </button>
-          )}
         </div>
       </div>
     </div>

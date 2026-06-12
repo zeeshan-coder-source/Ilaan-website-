@@ -13,9 +13,10 @@ import ContactSection from './components/ContactSection';
 import Background3D from './components/Background3D';
 import './App.css';
 
-// Navigation context and page views
-import { useNavigation } from './context/NavigationContext';
+// Navigation and page views
+import { Routes, Route } from 'react-router-dom';
 import ProductsPage from './pages/Products';
+import DigitalSignage from './pages/DigitalSignage';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import Lenis from 'lenis';
@@ -26,7 +27,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const { currentPage } = useNavigation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -80,20 +80,23 @@ function App() {
             key="content"
             className="content-wrapper relative z-10"
           >
-            {currentPage === 'home' && (
-              <>
-                <Hero />
-                <ServiceSection />
-                <GlowSection />
-                <Products />
-                <CommercialDisplays />
-                <Socials />
-                <ContactSection />
-                <Footer />
-              </>
-            )}
-            
-            {currentPage === 'products' && <ProductsPage />}
+            <Routes>
+              <Route path="/" element={
+                <>
+                  <Hero />
+                  <ServiceSection />
+                  <GlowSection />
+                  <Products />
+                  <CommercialDisplays />
+                  <Socials />
+                  <ContactSection />
+                  <Footer />
+                </>
+              } />
+              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/products/:productSlug" element={<ProductsPage />} />
+              <Route path="/digital-signage" element={<DigitalSignage />} />
+            </Routes>
           </div>
         )}
       </AnimatePresence>

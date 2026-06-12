@@ -1,9 +1,9 @@
 // Products Local Data for Ilaan Digital Signage Catalog
-import p1 from '../assets/ChatGPT Image Apr 30, 2026, 05_41_10 PM 1.png';
-import p2 from '../assets/ChatGPT Image Apr 30, 2026, 05_41_10 PM 3.png';
-import p3 from '../assets/02 1.png';
-import p4 from '../assets/ChatGPT Image Apr 30, 2026, 05_41_10 PM 1 (1).png';
-import p5 from '../assets/ChatGPT Image Apr 30, 2026, 05_41_10 PM 1 (2).png';
+import p1 from '../assets/Rectangle 71 (1).png';
+import p2 from '../assets/Rectangle 72 (1).png';
+import p3 from '../assets/Rectangle 73 (1).png';
+import p4 from '../assets/Rectangle 74 (1).png';
+import p5 from '../assets/Rectangle 70 (1).png';
 import p6 from '../assets/ChatGPT Image Apr 30, 2026, 05_41_10 PM 1.png';
 
 // Fallback images from standard assets
@@ -24,7 +24,7 @@ export const products = [
     ledType: "Outdoor LED Display",
     price: 1200,
     image: p1,
-    description: "LED Poster Display for standalone advertisements. Features high visibility in outdoor conditions.",
+    description: "LED Poster Manufacturer in China",
     featured: true,
     specs: {
       resolution: "1920 x 1080",
@@ -46,7 +46,7 @@ export const products = [
     ledType: "Rental LED Display",
     price: 2500,
     image: p2,
-    description: "Premium large-format Smart LED TV for boardrooms, high-end retail, and events.",
+    description: "Traditional LCD TVs limit size, impact, and flexibility. Modular LED walls increase complexity and cost.",
     featured: true,
     specs: {
       resolution: "3840 x 2160 (4K)",
@@ -68,7 +68,7 @@ export const products = [
     ledType: "Creative LED Display",
     price: 3500,
     image: p3,
-    description: "Holographic invisible LED screen for floating 3D effects on windows and glass storefronts.",
+    description: "Holographic invisible LED screen with non-blocking visual effect",
     featured: true,
     specs: {
       resolution: "Custom Pixel Pitch",
@@ -90,7 +90,7 @@ export const products = [
     ledType: "Creative LED Display",
     price: 2800,
     image: p4,
-    description: "High transparency LED glass facade solution for architectural signage and retail display window panels.",
+    description: "High-Visibility LED Solution for Retail, Brand Signage, Glass Facades & Creative Installation",
     featured: true,
     specs: {
       resolution: "1024 x 768",
@@ -114,7 +114,7 @@ export const products = [
     ledType: "LED Mesh",
     price: 150,
     image: p5,
-    description: "Outdoor flexible LED mesh screen for creative installations, building facades, and massive scale-out displays.",
+    description: "Outdoor LED Mesh Screen for Creative Architecture & Brand Displays",
     featured: false,
     specs: {
       resolution: "Strip Pitch Options",
@@ -136,7 +136,7 @@ export const products = [
     ledType: "Rental LED Display",
     price: 95,
     image: p6,
-    description: "High-quality, rapid-assemble LED panels designed for events, stage backdrops, and mobile exhibitions.",
+    description: "High-Quality LED Panels for Business and Event Solutions",
     featured: false,
     specs: {
       resolution: "P2.6 / P2.9 / P3.91",
@@ -158,7 +158,7 @@ export const products = [
     ledType: "Creative LED Display",
     price: 140,
     image: webp1,
-    description: "Free shape, bendable and customizable LED screens for immersive displays, columns, and custom setups.",
+    description: "Stop Settling for Ordinary Displays — Turn Every Space Into a Visual Experience",
     featured: false,
     specs: {
       resolution: "Variable",
@@ -180,7 +180,7 @@ export const products = [
     ledType: "Rental LED Display",
     price: 110,
     image: webp2,
-    description: "High-resolution commercial indoor LED display panel ideal for control rooms, corporate lobbies, and retail.",
+    description: "High-Resolution Commercial LED Screen",
     featured: false,
     specs: {
       resolution: "Fine Pitch P1.2 / P1.5 / P1.8",
@@ -202,7 +202,7 @@ export const products = [
     ledType: "Outdoor LED Display",
     price: 180,
     image: webp3,
-    description: "High brightness outdoor LED signage panels with extreme weatherproofing and energy-efficient performance.",
+    description: "High-brightness outdoor LED displays engineered for branding, retail façades, events, and rental use.",
     featured: false,
     specs: {
       resolution: "P4 / P5 / P6 / P8",
@@ -219,12 +219,12 @@ export const products = [
   },
   {
     id: 10,
-    name: "Seamless LED Poster",
+    name: "Seammless LED Poster",
     category: "LED Poster & Banners",
     ledType: "Creative LED Display",
     price: 125,
     image: webp4,
-    description: "Premium seamless smart LED poster for retail displays. Clean aesthetic and high impact.",
+    description: "1.53mm & 1.86mm & 2mm",
     featured: false,
     specs: {
       resolution: "Fine Pitch P1.92 / P2.5",
@@ -246,7 +246,7 @@ export const products = [
     ledType: "Creative LED Display",
     price: 45,
     image: webp5,
-    description: "Budget-friendly indoor LED poster providing cost-effective digital signage solutions for malls and shops.",
+    description: "2mm & 2.5mm & 3mm",
     featured: false,
     specs: {
       resolution: "P2.5 / P3.0",
@@ -268,7 +268,7 @@ export const products = [
     ledType: "Outdoor LED Display",
     price: 48,
     image: webp6,
-    description: "Heavy-duty outdoor digital poster with double-sided screen options and advanced climate control casing.",
+    description: "2.5mm & 3mm & 3plus",
     featured: false,
     specs: {
       resolution: "P3.0 / P4.0",
@@ -290,7 +290,7 @@ export const products = [
     ledType: "Creative LED Display",
     price: 160,
     image: webp7,
-    description: "Ultra-portable foldable LED display poster. Collapsible layout fits in a portable carrying case.",
+    description: "2mm & 2.5mm & 3mm",
     featured: false,
     specs: {
       resolution: "P2.0 / P2.5",
@@ -322,17 +322,17 @@ export const ledTypes = [
 ];
 
 export const priceRanges = [
-  { label: "< $50.00", min: 0, max: 50.8 },
-  { label: "$50.00 - $120.00", min: 50.8, max: 120 },
-  { label: "> $130.00", min: 130, max: Infinity }
+  { label: "< $50.00", min: 0, max: 50 },
+  { label: "$50.00 - $100.00", min: 50, max: 100 },
+  { label: "> $100.00", min: 100, max: Infinity }
 ];
 
 export const popularCategories = [
   "LED",
   "Outdoor",
   "Indoor",
+  "Display",
+  "Seammless",
   "Poster",
-  "Sports/Video",
-  "Project",
   "Foldable LED"
 ];

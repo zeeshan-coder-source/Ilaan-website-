@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, Search, X } from 'lucide-react';
-import { categories, ledTypes, priceRanges, popularCategories } from '../data/products';
+import { ChevronDown, ChevronUp, X } from 'lucide-react';
+import { categories, ledTypes, popularCategories } from '../data/products';
 
 const Filters = ({
   category,
@@ -18,13 +18,6 @@ const Filters = ({
   const [isLedTypeOpen, setIsLedTypeOpen] = useState(true);
   const [isPriceRangeOpen, setIsPriceRangeOpen] = useState(true);
 
-  // Local state to filter categories list inside categories search
-  const [categoryQuery, setCategoryQuery] = useState("");
-
-  const filteredCategories = categories.filter(cat => 
-    cat.toLowerCase().includes(categoryQuery.toLowerCase())
-  );
-
   const hasActiveFilters = 
     category !== "all" || 
     ledType !== "all" || 
@@ -34,8 +27,8 @@ const Filters = ({
   return (
     <div className="w-full flex flex-col space-y-6 text-white font-poppins pr-0 md:pr-4">
       {/* Header section with Clear option */}
-      <div className="flex items-center justify-between pb-3 border-b border-gray-800">
-        <span className="text-lg font-bold tracking-wide">Filter by</span>
+      <div className="flex items-center justify-between pb-3">
+        <span className="text-xl font-bold tracking-wide text-white">Filter by</span>
         {hasActiveFilters && (
           <button 
             onClick={resetFilters}
@@ -48,161 +41,120 @@ const Filters = ({
       </div>
 
       {/* Accordion 1: Categories */}
-      <div className="border-b border-gray-900 pb-4">
+      <div className="pb-2">
         <button
           onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
-          className="w-full py-2 bg-[#D9FF00] text-black font-bold px-4 rounded-xl flex items-center justify-between transition-all hover:opacity-90 cursor-pointer"
+          className="w-full py-3 bg-[#D9FF00] text-black font-bold px-4 rounded-xl flex items-center justify-between transition-all hover:opacity-90 cursor-pointer"
         >
-          <span className="text-sm uppercase tracking-wider">Categories</span>
+          <span className="text-sm font-bold tracking-wide">Categories</span>
           {isCategoriesOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </button>
 
         {isCategoriesOpen && (
-          <div className="mt-3 space-y-2 px-1">
-            {/* Search Input for categories */}
-            <div className="relative mb-2">
-              <input
-                type="text"
-                value={categoryQuery}
-                onChange={(e) => setCategoryQuery(e.target.value)}
-                placeholder="Search Category"
-                className="w-full bg-black/40 border border-gray-800 text-xs py-2 pl-8 pr-3 rounded-lg focus:outline-none focus:border-[#D9FF00]/40 text-gray-200"
-              />
-              <Search size={12} className="absolute left-2.5 top-3 text-gray-500" />
-            </div>
-
-            {/* List options */}
-            <div className="flex flex-col space-y-1.5 max-h-[180px] overflow-y-auto">
-              <button
-                onClick={() => setCategory("all")}
-                className={`text-left text-xs py-1.5 px-2.5 rounded-lg transition-colors font-medium ${
-                  category === "all" 
-                    ? "bg-[#D9FF00]/10 text-[#D9FF00] border-l-2 border-[#D9FF00]" 
-                    : "text-gray-400 hover:bg-white/5 hover:text-white"
-                }`}
-              >
-                All Categories
-              </button>
-              
-              {filteredCategories.map((cat) => (
+          <div className="mt-4 space-y-3 px-1">
+            {categories.map((cat) => {
+              const isSelected = category === cat;
+              return (
                 <button
                   key={cat}
-                  onClick={() => setCategory(cat)}
-                  className={`text-left text-xs py-1.5 px-2.5 rounded-lg transition-colors font-medium ${
-                    category === cat 
-                      ? "bg-[#D9FF00]/10 text-[#D9FF00] border-l-2 border-[#D9FF00]" 
-                      : "text-gray-400 hover:bg-white/5 hover:text-white"
+                  onClick={() => setCategory(isSelected ? "all" : cat)}
+                  className={`text-left text-xs sm:text-sm py-2.5 px-4 rounded-lg transition-all w-full cursor-pointer ${
+                    isSelected 
+                      ? "bg-white text-black font-bold shadow-md" 
+                      : "text-gray-300 hover:text-[#D9FF00] font-medium"
                   }`}
                 >
                   {cat}
                 </button>
-              ))}
-            </div>
+              );
+            })}
           </div>
         )}
       </div>
 
       {/* Accordion 2: LED Type */}
-      <div className="border-b border-gray-900 pb-4">
+      <div className="pb-2">
         <button
           onClick={() => setIsLedTypeOpen(!isLedTypeOpen)}
-          className="w-full py-2 bg-[#D9FF00] text-black font-bold px-4 rounded-xl flex items-center justify-between transition-all hover:opacity-90 cursor-pointer"
+          className="w-full py-3 bg-[#D9FF00] text-black font-bold px-4 rounded-xl flex items-center justify-between transition-all hover:opacity-90 cursor-pointer"
         >
-          <span className="text-sm uppercase tracking-wider">LED Type</span>
+          <span className="text-sm font-bold tracking-wide">LED Type</span>
           {isLedTypeOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </button>
 
         {isLedTypeOpen && (
-          <div className="mt-3 space-y-1.5 px-1">
-            <button
-              onClick={() => setLedType("all")}
-              className={`text-left text-xs py-1.5 px-2.5 rounded-lg w-full transition-colors font-medium ${
-                ledType === "all" 
-                  ? "bg-[#D9FF00]/10 text-[#D9FF00] border-l-2 border-[#D9FF00]" 
-                  : "text-gray-400 hover:bg-white/5 hover:text-white"
-              }`}
-            >
-              All Types
-            </button>
-            {ledTypes.map((type) => (
-              <button
-                key={type}
-                onClick={() => setLedType(type)}
-                className={`text-left text-xs py-1.5 px-2.5 rounded-lg w-full transition-colors font-medium ${
-                  ledType === type 
-                    ? "bg-[#D9FF00]/10 text-[#D9FF00] border-l-2 border-[#D9FF00]" 
-                    : "text-gray-400 hover:bg-white/5 hover:text-white"
-                }`}
-              >
-                {type}
-              </button>
-            ))}
+          <div className="mt-4 space-y-3 px-1">
+            {ledTypes.map((type) => {
+              const isSelected = ledType === type;
+              return (
+                <button
+                  key={type}
+                  onClick={() => setLedType(isSelected ? "all" : type)}
+                  className={`text-left text-xs sm:text-sm py-2.5 px-4 rounded-lg w-full transition-all cursor-pointer ${
+                    isSelected 
+                      ? "bg-white text-black font-bold shadow-md" 
+                      : "text-gray-300 hover:text-[#D9FF00] font-medium"
+                  }`}
+                >
+                  {type}
+                </button>
+              );
+            })}
           </div>
         )}
       </div>
 
       {/* Accordion 3: Price Range */}
-      <div className="border-b border-gray-900 pb-4">
+      <div className="pb-2">
         <button
           onClick={() => setIsPriceRangeOpen(!isPriceRangeOpen)}
-          className="w-full py-2 bg-[#D9FF00] text-black font-bold px-4 rounded-xl flex items-center justify-between transition-all hover:opacity-90 cursor-pointer"
+          className="w-full py-3 bg-[#D9FF00] text-black font-bold px-4 rounded-xl flex items-center justify-between transition-all hover:opacity-90 cursor-pointer"
         >
-          <span className="text-sm uppercase tracking-wider">Price Range</span>
+          <span className="text-sm font-bold tracking-wide">Price Range</span>
           {isPriceRangeOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </button>
 
         {isPriceRangeOpen && (
-          <div className="mt-3 space-y-1.5 px-1">
+          <div className="mt-4 space-y-3 px-1">
             <button
-              onClick={() => setPriceRange("all")}
-              className={`text-left text-xs py-1.5 px-2.5 w-full rounded-lg transition-colors font-medium ${
-                priceRange === "all" 
-                  ? "bg-[#D9FF00]/10 text-[#D9FF00] border-l-2 border-[#D9FF00]" 
-                  : "text-gray-400 hover:bg-white/5 hover:text-white"
-              }`}
-            >
-              All Prices
-            </button>
-            
-            <button
-              onClick={() => setPriceRange("under50")}
-              className={`text-left text-xs py-1.5 px-2.5 w-full rounded-lg transition-colors font-medium ${
+              onClick={() => setPriceRange(priceRange === "under50" ? "all" : "under50")}
+              className={`text-left text-xs sm:text-sm py-2.5 px-4 w-full rounded-lg transition-all cursor-pointer ${
                 priceRange === "under50" 
-                  ? "bg-[#D9FF00]/10 text-[#D9FF00] border-l-2 border-[#D9FF00]" 
-                  : "text-gray-400 hover:bg-white/5 hover:text-white"
+                  ? "bg-white text-black font-bold shadow-md" 
+                  : "text-gray-300 hover:text-[#D9FF00] font-medium"
               }`}
             >
-              &lt; $50.80
+              &lt; $50.00
             </button>
 
             <button
-              onClick={() => setPriceRange("50to120")}
-              className={`text-left text-xs py-1.5 px-2.5 w-full rounded-lg transition-colors font-medium ${
-                priceRange === "50to120" 
-                  ? "bg-[#D9FF00]/10 text-[#D9FF00] border-l-2 border-[#D9FF00]" 
-                  : "text-gray-400 hover:bg-white/5 hover:text-white"
+              onClick={() => setPriceRange(priceRange === "50to100" ? "all" : "50to100")}
+              className={`text-left text-xs sm:text-sm py-2.5 px-4 w-full rounded-lg transition-all cursor-pointer ${
+                priceRange === "50to100" 
+                  ? "bg-white text-black font-bold shadow-md" 
+                  : "text-gray-300 hover:text-[#D9FF00] font-medium"
               }`}
             >
-              $50.00 - $120.00
+              $50.00 - $100.00
             </button>
 
             <button
-              onClick={() => setPriceRange("above130")}
-              className={`text-left text-xs py-1.5 px-2.5 w-full rounded-lg transition-colors font-medium ${
-                priceRange === "above130" 
-                  ? "bg-[#D9FF00]/10 text-[#D9FF00] border-l-2 border-[#D9FF00]" 
-                  : "text-gray-400 hover:bg-white/5 hover:text-white"
+              onClick={() => setPriceRange(priceRange === "above100" ? "all" : "above100")}
+              className={`text-left text-xs sm:text-sm py-2.5 px-4 w-full rounded-lg transition-all cursor-pointer ${
+                priceRange === "above100" 
+                  ? "bg-white text-black font-bold shadow-md" 
+                  : "text-gray-300 hover:text-[#D9FF00] font-medium"
               }`}
             >
-              &gt; $130.00
+              &gt; $100.00
             </button>
           </div>
         )}
       </div>
 
       {/* Popular Categories tag buttons */}
-      <div className="bg-[#121212] border border-gray-800 rounded-3xl p-5 shadow-lg select-none">
-        <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">
+      <div className="bg-white rounded-[2rem] p-5 shadow-lg select-none">
+        <h4 className="text-sm font-bold text-gray-950 mb-3 text-left">
           Browse by Popular Category
         </h4>
         <div className="flex flex-wrap gap-2">
@@ -212,10 +164,10 @@ const Filters = ({
               <button
                 key={tag}
                 onClick={() => setPopularTag(isActive ? "all" : tag)}
-                className={`text-[10px] font-bold px-3 py-1.5 rounded-full transition-all active:scale-95 cursor-pointer ${
+                className={`text-[10px] sm:text-xs font-semibold px-3 py-1.5 rounded-lg transition-all active:scale-95 cursor-pointer ${
                   isActive 
-                    ? "bg-[#D9FF00] text-black shadow-md shadow-[#D9FF00]/15" 
-                    : "bg-[#1f1f1f] text-gray-300 hover:bg-gray-800 hover:text-white"
+                    ? "bg-black text-[#D9FF00]" 
+                    : "bg-[#D9FF00] text-black hover:bg-black hover:text-[#D9FF00]"
                 }`}
               >
                 {tag}

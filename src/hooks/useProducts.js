@@ -59,11 +59,11 @@ export const useProducts = () => {
     // 4. Price Range Filter
     if (priceRange !== "all") {
       if (priceRange === "under50") {
-        result = result.filter(p => p.price <= 50.80);
-      } else if (priceRange === "50to120") {
-        result = result.filter(p => p.price > 50.80 && p.price <= 120.00);
-      } else if (priceRange === "above130") {
-        result = result.filter(p => p.price > 130.00);
+        result = result.filter(p => p.price <= 50.00);
+      } else if (priceRange === "50to100") {
+        result = result.filter(p => p.price > 50.00 && p.price <= 100.00);
+      } else if (priceRange === "above100") {
+        result = result.filter(p => p.price > 100.00);
       }
     }
 

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Menu, X, Search, Globe, Grid, ChevronRight } from 'lucide-react';
+import { Menu, X, HelpCircle, Settings, Grid, ChevronRight } from 'lucide-react';
 import { useNavigation } from '../context/NavigationContext';
 import logoImage from '../assets/logo.png';
+import navbarBg from '../assets/navbarbg.png';
+import gridMenuIcon from '../assets/Menu.png';
 
 const ProductNavbar = () => {
   const { currentPage, navigateTo } = useNavigation();
@@ -28,16 +30,19 @@ const ProductNavbar = () => {
   return (
     <header className="w-full relative z-40 px-4 md:px-8 pt-4 md:pt-6 max-w-7xl mx-auto">
       {/* Floating Glassmorphism Navbar container */}
-      <div className="w-full bg-black/60 backdrop-blur-md border border-[#D9FF00]/15 rounded-full py-3 px-6 md:px-8 flex items-center justify-between shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
-        
+      <div 
+        className="w-full bg-cover bg-center bg-no-repeat border border-white/30 rounded-full py-3 px-6 md:px-8 flex items-center justify-between shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+        style={{ backgroundImage: `url(${navbarBg})` }}
+      >
+
         {/* Logo */}
-        <div 
+        <div
           onClick={() => handleNavClick('home')}
           className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-all shrink-0"
         >
-          <img 
-            src={logoImage} 
-            alt="Ilaan Logo" 
+          <img
+            src={logoImage}
+            alt="Ilaan Logo"
             className="h-7 sm:h-9 w-auto object-contain"
           />
         </div>
@@ -50,14 +55,10 @@ const ProductNavbar = () => {
               <button
                 key={item.name}
                 onClick={() => handleNavClick(item.id)}
-                className={`text-sm font-semibold tracking-wide transition-all relative py-1 hover:text-[#D9FF00] ${
-                  isActive ? 'text-[#D9FF00]' : 'text-gray-300'
-                }`}
+                className={`text-sm font-normal tracking-wide transition-all relative py-1 hover:text-[#D9FF00] ${isActive ? 'text-[#D9FF00]' : 'text-gray-300'
+                  }`}
               >
                 {item.name}
-                {isActive && (
-                  <span className="absolute bottom-0 left-1/4 right-1/4 h-[2px] bg-[#D9FF00] rounded-full" />
-                )}
               </button>
             );
           })}
@@ -66,15 +67,15 @@ const ProductNavbar = () => {
         {/* Right Action Icons & Buttons */}
         <div className="hidden lg:flex items-center space-x-4">
           {/* Quick utility icons */}
-          <div className="flex items-center space-x-2 text-gray-400 border-r border-gray-800 pr-4">
+          <div className="flex items-center space-x-2 text-gray-400">
             <button className="p-1.5 hover:text-[#D9FF00] transition-colors rounded-full hover:bg-white/5">
-              <Search size={18} />
+              <HelpCircle size={18} />
             </button>
             <button className="p-1.5 hover:text-[#D9FF00] transition-colors rounded-full hover:bg-white/5">
-              <Globe size={18} />
+              <Settings size={18} />
             </button>
             <button className="p-1.5 hover:text-[#D9FF00] transition-colors rounded-full hover:bg-white/5">
-              <Grid size={18} />
+              <img src={gridMenuIcon} alt="Menu" className="w-[18px] h-[18px] object-contain" />
             </button>
           </div>
 
@@ -83,7 +84,7 @@ const ProductNavbar = () => {
             <button className="px-5 py-2 text-xs font-bold bg-[#D9FF00] text-black rounded-full hover:bg-[#c4e600] transition-all hover:scale-105 active:scale-95 shadow-[0_4px_12px_rgba(217,255,0,0.2)]">
               Sign Up
             </button>
-            <button className="px-5 py-2 text-xs font-bold border border-gray-700 text-white rounded-full hover:border-[#D9FF00] hover:text-[#D9FF00] transition-all hover:bg-white/5 active:scale-95">
+            <button className="px-5 py-2 text-xs font-bold bg-black text-white rounded-full hover:bg-black/80 transition-all hover:scale-105 active:scale-95">
               Sign In
             </button>
           </div>
@@ -116,21 +117,20 @@ const ProductNavbar = () => {
               <button
                 key={item.name}
                 onClick={() => handleNavClick(item.id)}
-                className={`text-left text-lg font-bold py-2 border-b border-gray-900 transition-colors flex items-center justify-between ${
-                  isActive ? 'text-[#D9FF00]' : 'text-gray-300 hover:text-[#D9FF00]'
-                }`}
+                className={`text-left text-lg font-bold py-2 border-b border-gray-900 transition-colors flex items-center justify-between ${isActive ? 'text-[#D9FF00]' : 'text-gray-300 hover:text-[#D9FF00]'
+                  }`}
               >
                 <span>{item.name}</span>
                 <ChevronRight size={16} className={isActive ? 'text-[#D9FF00]' : 'text-gray-600'} />
               </button>
             );
           })}
-          
+
           <div className="flex flex-col space-y-3 pt-4">
             <button className="w-full py-3 text-center text-sm font-bold bg-[#D9FF00] text-black rounded-full shadow-lg">
               Sign Up
             </button>
-            <button className="w-full py-3 text-center text-sm font-bold border border-gray-700 text-white rounded-full">
+            <button className="w-full py-3 text-center text-sm font-bold bg-black text-white rounded-full">
               Sign In
             </button>
           </div>
