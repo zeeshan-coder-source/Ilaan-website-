@@ -4,10 +4,10 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // Images Import from assets
-import card1 from '../assets/Group 36.png';
-import card2 from '../assets/Group 36 (2).png';
-import card3 from '../assets/Group 36 (3).png';
-import card4 from '../assets/Group 36 (4).png';
+import card1 from '../assets/c1.png';
+import card2 from '../assets/c2.png';
+import card3 from '../assets/c3.png';
+import card4 from '../assets/c4.png';
 import head1 from '../assets/Untitled-7 1.png';
 import head3 from '../assets/Untitled-8 1.png';
 import head4 from '../assets/Untitled-9 1.png';
@@ -16,7 +16,8 @@ import head2 from '../assets/Group 124.png';
 const Card = ({ titleImg, description, image, bgColor, textColor, showLogin, btnColor, btnTextColor }) => {
   return (
     <div
-      className={`service-card relative group w-full h-[360px] sm:h-[480px] md:h-[620px] lg:h-[600px] xl:h-[805px] rounded-[2.5rem] md:rounded-[4rem] rounded-tl-none md:rounded-tl-none pt-5 p-5 md:pt-14 md:p-16 flex flex-col justify-start overflow-hidden shadow-2xl ${bgColor} ${textColor} cursor-pointer origin-center will-change-transform`}
+      // className={`service-card relative group w-full h-[360px] sm:h-[480px] md:h-[620px] lg:h-[600px] xl:h-[805px] rounded-[2.5rem] md:rounded-[4rem] rounded-tl-none md:rounded-tl-none pt-5 p-5 md:pt-14 md:p-16 flex flex-col justify-start overflow-hidden shadow-2xl ${bgColor} ${textColor} cursor-pointer origin-center will-change-transform`}
+      className={`service-card relative group w-full h-[260px] sm:h-[480px] md:h-[620px] lg:h-[600px] xl:h-[660px] rounded-[2.5rem] md:rounded-[4rem] rounded-tl-none md:rounded-tl-none pt-5 p-5 md:pt-14 md:p-16 flex flex-col justify-start overflow-hidden shadow-2xl ${bgColor} ${textColor} cursor-pointer origin-center will-change-transform`}
     >
       <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
       <div className="relative z-10 w-full">
@@ -47,6 +48,7 @@ const Card = ({ titleImg, description, image, bgColor, textColor, showLogin, btn
           Learn more <ChevronRight size={20} className="w-3 h-3 md:w-5 md:h-5" />
         </button>
       </div> */}
+
     </div>
   );
 };

@@ -64,78 +64,33 @@ const ProductNavbar = () => {
           })}
         </nav>
 
-        {/* Right Action Icons & Buttons */}
-        <div className="hidden lg:flex items-center space-x-4">
+        {/* Right Action Icons & Buttons (Visible on all screens, compact on mobile) */}
+        <div className="flex items-center space-x-2 sm:space-x-4">
           {/* Quick utility icons */}
-          <div className="flex items-center space-x-2 text-gray-400">
-            <button className="p-1.5 hover:text-[#D9FF00] transition-colors rounded-full hover:bg-white/5">
-              <HelpCircle size={18} />
+          <div className="flex items-center space-x-1 sm:space-x-2 text-gray-400">
+            <button className="p-1 sm:p-1.5 hover:text-[#D9FF00] transition-colors rounded-full hover:bg-white/5">
+              <HelpCircle size={16} />
             </button>
-            <button className="p-1.5 hover:text-[#D9FF00] transition-colors rounded-full hover:bg-white/5">
-              <Settings size={18} />
+            <button className="p-1 sm:p-1.5 hover:text-[#D9FF00] transition-colors rounded-full hover:bg-white/5">
+              <Settings size={16} />
             </button>
-            <button className="p-1.5 hover:text-[#D9FF00] transition-colors rounded-full hover:bg-white/5">
-              <img src={gridMenuIcon} alt="Menu" className="w-[18px] h-[18px] object-contain" />
+            <button className="p-1 sm:p-1.5 hover:text-[#D9FF00] transition-colors rounded-full hover:bg-white/5">
+              <img src={gridMenuIcon} alt="Menu" className="w-[14px] h-[14px] sm:w-[16px] sm:h-[16px] object-contain" />
             </button>
           </div>
 
           {/* Auth Actions */}
-          <div className="flex items-center space-x-3">
-            <button className="px-5 py-2 text-xs font-bold bg-[#D9FF00] text-black rounded-full hover:bg-[#c4e600] transition-all hover:scale-105 active:scale-95 shadow-[0_4px_12px_rgba(217,255,0,0.2)]">
+          <div className="flex items-center space-x-1.5 sm:space-x-3">
+            <button className="px-3 sm:px-5 py-1.5 sm:py-2 text-[10px] sm:text-xs font-bold bg-[#D9FF00] text-black rounded-full hover:bg-[#c4e600] transition-all hover:scale-105 active:scale-95 shadow-[0_4px_12px_rgba(217,255,0,0.15)]">
               Sign Up
             </button>
-            <button className="px-5 py-2 text-xs font-bold bg-black text-white rounded-full hover:bg-black/80 transition-all hover:scale-105 active:scale-95">
+            <button className="px-3 sm:px-5 py-1.5 sm:py-2 text-[10px] sm:text-xs font-bold bg-transparent text-white rounded-full hover:text-[#D9FF00] transition-all active:scale-95">
               Sign In
             </button>
           </div>
-        </div>
-
-        {/* Mobile menu and CTA button wrapper */}
-        <div className="flex items-center space-x-3 md:space-x-4 lg:hidden">
-          {/* Sign Up Quick Button for Mobile */}
-          <button className="px-4 py-1.5 text-xs font-bold bg-[#D9FF00] text-black rounded-full hover:bg-[#c4e600] active:scale-95 transition-all">
-            Sign Up
-          </button>
-
-          {/* Hamburger button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-1.5 text-gray-400 hover:text-white transition-colors"
-          >
-            {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
         </div>
 
       </div>
-
-      {/* Mobile Drawer Menu */}
-      {isMobileMenuOpen && (
-        <div className="absolute top-full left-4 right-4 mt-2 bg-[#0d0d0d]/95 backdrop-blur-lg border border-gray-800 rounded-3xl p-6 shadow-2xl z-50 flex flex-col space-y-4 md:hidden">
-          {navItems.map((item, idx) => {
-            const isActive = currentPage === item.id;
-            return (
-              <button
-                key={item.name}
-                onClick={() => handleNavClick(item.id)}
-                className={`text-left text-lg font-bold py-2 border-b border-gray-900 transition-colors flex items-center justify-between ${isActive ? 'text-[#D9FF00]' : 'text-gray-300 hover:text-[#D9FF00]'
-                  }`}
-              >
-                <span>{item.name}</span>
-                <ChevronRight size={16} className={isActive ? 'text-[#D9FF00]' : 'text-gray-600'} />
-              </button>
-            );
-          })}
-
-          <div className="flex flex-col space-y-3 pt-4">
-            <button className="w-full py-3 text-center text-sm font-bold bg-[#D9FF00] text-black rounded-full shadow-lg">
-              Sign Up
-            </button>
-            <button className="w-full py-3 text-center text-sm font-bold bg-black text-white rounded-full">
-              Sign In
-            </button>
-          </div>
-        </div>
-      )}
     </header>
   );
 };

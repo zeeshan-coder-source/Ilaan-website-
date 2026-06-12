@@ -1,8 +1,8 @@
 // Products Local Data for Ilaan Digital Signage Catalog
-import p1 from '../assets/Rectangle 71 (1).png';
-import p2 from '../assets/Rectangle 72 (1).png';
-import p3 from '../assets/Rectangle 73 (1).png';
-import p4 from '../assets/Rectangle 74 (1).png';
+import p1 from '../assets/cart4.png';
+import p2 from '../assets/cart3.png';
+import p3 from '../assets/cart2.png';
+import p4 from '../assets/cart1.png';
 import p5 from '../assets/Rectangle 70 (1).png';
 import p6 from '../assets/ChatGPT Image Apr 30, 2026, 05_41_10 PM 1.png';
 

@@ -49,7 +49,7 @@ const HoverLink = ({ text, className = "", defaultColor = "white", hoverColor = 
   );
 };
 
-const BottomHoverLink = ({ text, className = "" }) => {
+const BottomHoverLink = ({ text, className = "", isDark = false }) => {
   const [hovered, setHovered] = useState(false);
   return (
     <span
@@ -58,7 +58,7 @@ const BottomHoverLink = ({ text, className = "" }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="block whitespace-nowrap" style={{ color: '#444444ff' }}>
+      <div className="block whitespace-nowrap" style={{ color: isDark ? 'rgba(20, 20, 20, 0.6)' : '#444444ff' }}>
         {text.split('').map((char, i) => (
           <span
             key={`a-${i}`}
@@ -73,7 +73,7 @@ const BottomHoverLink = ({ text, className = "" }) => {
           </span>
         ))}
       </div>
-      <div className="absolute inset-0 block whitespace-nowrap" style={{ color: '#000' }}>
+      <div className="absolute inset-0 block whitespace-nowrap" style={{ color: isDark ? '#000000ff' : '#000' }}>
         {text.split('').map((char, i) => (
           <span
             key={`b-${i}`}
@@ -100,11 +100,11 @@ import moreSalesImg from '../assets/More Sales.png';
 import everyDayImg from '../assets/Every Day.png';
 import ilanImg from '../assets/ilan.png';
 
-const Footer = () => {
+const Footer = ({ bgGradient, isDark = false }) => {
   return (
     <footer
-      className="w-full font-sans relative xl:pb-[2.5vw]"
-      style={{ background: 'linear-gradient(to bottom, #e6fba2 0%, #cdff00 100%)' }}
+      className="w-full font-sans relative xl:pb-[2.5vw] pt-[40px]"
+      style={{ background: bgGradient || 'linear-gradient(to bottom, #e6fba2 0%, #cdff00 100%)' }}
     >
       {/* Background Panel Container */}
       <div className="relative mx-auto w-[90%] md:w-[95%] min-h-[700px] md:min-h-[780px] flex flex-col items-center text-white px-6 pt-12 pb-24">
@@ -217,13 +217,13 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="w-full flex flex-row xl:flex-row-reverse justify-between items-center px-6 sm:px-10 md:px-16 pb-4 pt-4 text-[10px] md:text-[12px] font-bold md:font-black uppercase text-black tracking-normal md:tracking-tighter z-20 xl:absolute xl:bottom-[2.5vw] xl:left-[2.5%] xl:w-[95%] xl:px-0">
+      <div className={`w-full flex flex-row xl:flex-row-reverse justify-between items-center px-6 sm:px-10 md:px-16 pb-4 pt-4 text-[10px] md:text-[12px] font-bold md:font-black uppercase tracking-normal md:tracking-tighter z-20 xl:absolute xl:bottom-[2.5vw] xl:left-[2.5%] xl:w-[95%] xl:px-0 ${isDark ? 'text-white' : 'text-black'}`}>
         <div className="flex space-x-3 sm:space-x-4 md:space-x-6">
-          <BottomHoverLink text="PRIVACY POLICY" />
-          <BottomHoverLink text="TERMS" />
+          <BottomHoverLink text="PRIVACY POLICY" isDark={isDark} />
+          <BottomHoverLink text="TERMS" isDark={isDark} />
         </div>
         <div className="opacity-90 text-right">
-          <BottomHoverLink text="© 2026 Ilaan Limited. All rights reserved" />
+          <BottomHoverLink text="© 2026 Ilaan Limited. All rights reserved" isDark={isDark} />
         </div>
       </div>
     </footer>
