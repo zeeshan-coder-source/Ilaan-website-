@@ -36,7 +36,7 @@ const ProductCard = ({ product, isCollection = false, onOpenDetails }) => {
       </div>
 
       {/* Info Panel (Solid Yellow-Green/Neon Background) */}
-      <div className="bg-[#D9FF00] p-5 sm:p-6 flex flex-col justify-start select-none h-[185px] shrink-0">
+      <div className="bg-[#D9FF00] p-5 sm:p-6 flex flex-col justify-start select-none h-[215px] sm:h-[185px] shrink-0">
         {isCollection ? (
           <div className="flex items-center justify-between gap-2 w-full">
             <h3 className="text-[21.38px] font-bold text-black font-inter leading-tight text-left">

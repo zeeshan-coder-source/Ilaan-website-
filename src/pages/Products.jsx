@@ -16,6 +16,7 @@ import productBgImg from '../assets/productbg.png';
 import herosectionbg from '../assets/Rectangle 12348.png';
 import checkMarkIcon from '../assets/check-mark 1.png';
 import buttonBgImg from '../assets/Rectangle 12352.png';
+import productherobg from '../assets/productherobg.png';
 
 const ProductsPage = () => {
   const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
@@ -72,9 +73,19 @@ const ProductsPage = () => {
     <div className="min-h-screen text-white overflow-x-hidden font-poppins selection:bg-[#D9FF00]/30 selection:text-white bg-[#4B4B4B]">
 
       {/* Top Section: Galaxy Background (Navbar + Hero + Search) */}
+      <style>{`
+        .products-hero-bg {
+          background-image: url(${productBgImg});
+        }
+        @media (max-w: 1023px) {
+          .products-hero-bg {
+            background-image: url(${productherobg});
+          }
+        }
+      `}</style>
       <div
-        className="w-full min-h-screen bg-cover bg-center bg-no-repeat relative border-b border-white/5 flex flex-col justify-between"
-        style={{ backgroundImage: `url(${productBgImg})`, backgroundColor: '#030508' }}
+        className="w-full min-h-screen bg-cover bg-center bg-no-repeat relative border-b border-white/5 flex flex-col justify-between products-hero-bg"
+        style={{ backgroundColor: '#030508' }}
       >
         <ProductNavbar />
 
@@ -84,26 +95,22 @@ const ProductsPage = () => {
           <section className="w-full flex-grow flex items-center py-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
 
-              <div className="lg:col-span-4 space-y-8 text-left">
+              <div className="lg:col-span-4 space-y-8 text-center lg:text-left">
                 {/* Breadcrumb */}
-                <div className="flex items-center gap-1.5 text-xs sm:text-sm font-light text-gray-400 tracking-wide">
+                <div className="flex items-center justify-center lg:justify-start gap-1.5 text-xs sm:text-sm font-light text-gray-400 tracking-wide">
                   <span className="cursor-pointer hover:text-white transition-colors">Products</span>
                   <span className="text-gray-600">/</span>
                   <span className="text-gray-200">4K Digital Signage Display</span>
                 </div>
 
                 <div className="space-y-6">
-                  <h1 className="text-4xl md:text-5xl lg:text-[56px] font-[100] tracking-tight leading-[1.15] text-white">
+                  <h1 className="text-4xl md:text-5xl lg:text-[56px] font-[100] tracking-tight leading-[1.15] text-white text-center lg:text-left">
                     4K Digital <br />
                     Signage Display
                   </h1>
 
-                  {/* Mobile Hero Image (visible only on mobile, placed between title and tags) */}
-                  <div className="lg:hidden flex justify-center items-center py-6 w-full">
-                    <div className="w-full max-w-[340px] drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)]">
-                      {/* <img src={heroDisplayImg} alt="Display" className="w-full h-auto object-contain" /> */}
-                    </div>
-                  </div>
+                  {/* Mobile Hero Spacer (shows background image monitor without overlap) */}
+                  <div className="lg:hidden h-[280px] sm:h-[340px] w-full"></div>
 
                   <div className="flex flex-wrap gap-2 pt-2 max-w-sm justify-center lg:justify-start mx-auto lg:mx-0">
                     {["Ultra HD Display", "24/7 Operation", "Remote", "Remote Content Management"].map((tag, idx) => (
@@ -139,7 +146,7 @@ const ProductsPage = () => {
 
 
               <div
-                className="lg:col-span-3 w-full max-w-[389px] h-[496px] p-6 lg:p-7 flex flex-col justify-between bg-cover bg-center bg-no-repeat rounded-2xl overflow-hidden shadow-2xl shrink-0 mx-auto lg:mx-0"
+                className="lg:col-span-3 w-full max-w-[389px] h-auto lg:h-[496px] p-6 lg:p-7 flex flex-col justify-between bg-cover bg-center bg-no-repeat rounded-2xl overflow-hidden shadow-2xl shrink-0 mx-auto lg:mx-0 gap-8 lg:gap-0"
                 style={{ backgroundImage: `url(${herosectionbg})` }}
               >
                 <div className="space-y-5">

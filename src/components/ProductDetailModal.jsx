@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, CheckCircle, Send, Shield, Zap, Sparkles } from 'lucide-react';
 
 const ProductDetailModal = ({ product, onClose }) => {
@@ -12,6 +12,13 @@ const ProductDetailModal = ({ product, onClose }) => {
   
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
 
   if (!product) return null;
 
@@ -32,13 +39,13 @@ const ProductDetailModal = ({ product, onClose }) => {
 
   return (
     <div 
-      className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md flex justify-center items-start p-4 md:p-6"
+      className="fixed inset-0 z-50 overflow-y-auto overscroll-contain bg-black/80 backdrop-blur-md flex justify-center items-start p-4 md:p-6"
       onClick={onClose}
     >
       {/* Modal Card wrapper */}
       <div 
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-5xl bg-[#0c0d0a]/95 border border-[#D9FF00]/20 rounded-[2.5rem] overflow-hidden shadow-[0_0_60px_rgba(217,255,0,0.12)] flex flex-col md:flex-row my-auto select-none"
+        className="relative w-full max-w-5xl bg-[#0c0d0a]/95 border border-[#D9FF00]/20 rounded-[2.5rem] overflow-hidden shadow-[0_0_60px_rgba(217,255,0,0.12)] flex flex-col md:flex-row my-4 md:my-auto"
       >
         
         {/* Close Button */}
