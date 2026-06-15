@@ -18,7 +18,7 @@ const NavOverlay = ({ isOpen, onClose }) => {
 
   const handleLinkClick = (id) => {
     onClose();
-    if (id === 'home' || id === 'products') {
+    if (id === 'home' || id === 'products' || id === 'media') {
       navigateTo(id);
     }
   };
@@ -32,21 +32,21 @@ const NavOverlay = ({ isOpen, onClose }) => {
       className="fixed inset-0 z-50 flex flex-col justify-between bg-black/95 backdrop-blur-xl p-4 md:p-6 lg:p-8"
     >
       {/* Outer border to match design theme */}
-      <div className="relative h-full w-full border-2 border-[#D9FF00]/30 rounded-[2.5rem] flex flex-col justify-between p-8 md:p-16 shadow-[0_0_30px_rgba(217,255,0,0.15)]">
+      <div className="relative h-full w-full border-2 border-[#D9FF00]/30 rounded-[2.5rem] flex flex-col justify-between shadow-[0_0_30px_rgba(217,255,0,0.15)]">
         
         {/* Top Header inside overlay */}
-        <div className="flex items-center justify-between w-full">
+        <div className="relative z-20 flex items-center justify-between w-full px-8 py-8 md:px-12 lg:px-16">
           <img 
             onClick={() => handleLinkClick('home')} 
             src={logoImage} 
             alt="Ilaan Logo" 
-            className="h-10 md:h-12 w-auto object-contain cursor-pointer hover:opacity-85 transition-opacity" 
+            className="h-12 md:h-18 w-auto object-contain cursor-pointer hover:opacity-85 transition-opacity" 
           />
           <button
             onClick={onClose}
             className="p-2 text-white hover:text-[#D9FF00] hover:scale-110 active:scale-95 transition-all focus:outline-none"
           >
-            <X size={32} strokeWidth={3} />
+            <X size={32} strokeWidth={3} className="text-white" />
           </button>
         </div>
 
@@ -74,7 +74,7 @@ const NavOverlay = ({ isOpen, onClose }) => {
         </nav>
 
         {/* Footer info inside overlay */}
-        <div className="text-center text-[10px] md:text-xs text-gray-500 font-medium tracking-widest uppercase">
+        <div className="text-center text-[10px] md:text-xs text-gray-500 font-medium tracking-widest uppercase pb-8 md:pb-16 pt-4">
           © 2026 Ilaan Limited. All rights reserved.
         </div>
       </div>

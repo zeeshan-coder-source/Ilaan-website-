@@ -11,6 +11,7 @@ export const NavigationProvider = ({ children }) => {
   const getPageId = (pathname) => {
     if (pathname.startsWith('/products')) return 'products';
     if (pathname.startsWith('/digital-signage')) return 'digital-signage';
+    if (pathname.startsWith('/media')) return 'media';
     return 'home';
   };
 

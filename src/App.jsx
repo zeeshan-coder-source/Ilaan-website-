@@ -17,6 +17,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import ProductsPage from './pages/Products';
 import DigitalSignage from './pages/DigitalSignage';
+import MediaPage from './pages/Media';
 
 import { AnimatePresence, motion } from 'framer-motion';
 import Lenis from 'lenis';
@@ -96,6 +97,7 @@ function App() {
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/products/:productSlug" element={<ProductsPage />} />
               <Route path="/digital-signage" element={<DigitalSignage />} />
+              <Route path="/media" element={<MediaPage />} />
             </Routes>
           </div>
         )}

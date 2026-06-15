@@ -25,6 +25,68 @@ const desktopSlides = [bg1, bg2, bg3, bg4];
 const mobileSlides = [bg1Mobile, bg2Mobile, bg3Mobile, bg4Mobile];
 const SLIDE_DURATION = 4000; // ms per slide
 
+// const slideContents = [
+//   {
+//     brandType: 'image',
+//     brandSrc: ilaanTextImage,
+//     titleType: 'image',
+//     titleSrc: studioTextImage,
+//     subtitle: 'Creative & Branding Solutions'
+//   },
+//   {
+//     brandType: 'text',
+//     brandText: 'ILAAN',
+//     titleType: 'text',
+//     titleText: 'Media',
+//     subtitle: 'Creative & Branding Solutions'
+//   },
+//   {
+//     brandType: 'text',
+//     brandText: 'ESL',
+//     titleType: 'text',
+//     titleText: 'Electronic',
+//     subtitle: 'Shelf Label'
+//   },
+//   {
+//     brandType: 'text',
+//     brandText: 'ILAAN',
+//     titleType: 'text',
+//     titleText: 'Digital Signage',
+//     subtitle: 'Smart Signage Solutions'
+//   }
+// ];
+
+const slideContents = [
+  {
+    brandType: 'text',
+    brandText: 'ILAAN',
+    titleType: 'text',
+    titleText: 'Studio',
+    subtitle: 'Creative & Branding Solutions'
+  },
+  {
+    brandType: 'text',
+    brandText: 'ILAAN',
+    titleType: 'text',
+    titleText: 'Media',
+    subtitle: 'Creative & Branding Solutions'
+  },
+  {
+    brandType: 'text',
+    brandText: 'ESL',
+    titleType: 'text',
+    titleText: 'Electronic',
+    subtitle: 'Shelf Label'
+  },
+  {
+    brandType: 'text',
+    brandText: 'ILAAN',
+    titleType: 'text',
+    titleText: 'Digital Signage',
+    subtitle: 'Smart Signage Solutions'
+  }
+];
+
 const Hero = () => {
   const [current, setCurrent] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -139,39 +201,139 @@ const Hero = () => {
             />
           </div>
 
-          <button 
+          <button
             onClick={() => setIsMenuOpen(true)}
-            className="p-2 transition-transform active:scale-90 hover:scale-105 cursor-pointer reveal-text"
+            className="p-2 transition-transform active:scale-90 hover:scale-105 cursor-pointer"
           >
             <Menu size={32} className="text-white" strokeWidth={3} />
           </button>
         </nav>
 
         {/* --- HERO CONTENT --- */}
+        {/* <main ref={contentRef} className="relative z-10 flex flex-col justify-center flex-grow px-8 md:px-16 lg:px-24">
+          <div className="max-w-5xl mb-10 md:mb-30 reveal-text">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+              >
+                <div className="py-2 md:py-6 flex flex-col md:flex-row items-start md:items-center justify-start gap-1 md:gap-1.5 lg:gap-2 -ml-[4px]">
+                
+                  {slideContents[current].brandType === 'image' ? (
+                    <img
+                      alt="Brand"
+                      className="block h-auto object-contain w-[180px] md:w-[200px] md:max-w-[320px] lg:max-w-[420px]"
+                      src={slideContents[current].brandSrc}
+                    />
+                  ) : (
+                    <span className="font-falcon text-white text-[42px] sm:text-[50px] md:text-[62px] lg:text-[84px] font-bold leading-none select-none tracking-tight">
+                      {slideContents[current].brandText}
+                    </span>
+                  )}
+
+                
+                  {slideContents[current].titleType === 'image' ? (
+                    <img
+                      alt="Title"
+                      className="block h-auto object-contain w-[160px] md:w-[180px] md:max-w-[280px] lg:max-w-[360px]"
+                      src={slideContents[current].titleSrc}
+                    />
+                  ) : (
+                    <span className="font-falcon text-[#D9FF00] text-[42px] sm:text-[50px] md:text-[62px] lg:text-[84px] font-bold leading-none select-none tracking-tight">
+                      {slideContents[current].titleText}
+                    </span>
+                  )}
+                </div>
+
+                <p className="mt-4 md:mt-10 text-[16px] md:text-[25px] text-white font-poppins font-normal leading-[1.32] tracking-normal max-w-[200px] md:max-w-full">
+                  {slideContents[current].subtitle}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </main> */}
+
+        {/* --- HERO CONTENT --- */}
+        {/* <main ref={contentRef} className="relative z-10 flex flex-col justify-center flex-grow px-8 md:px-16 lg:px-24">
+          <div className="max-w-5xl mb-10 md:mb-30 reveal-text">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+              >
+                <div className="py-2 md:py-6 flex flex-row items-center justify-start gap-3 md:gap-4 lg:gap-5 -ml-[4px]">
+
+
+                  {slideContents[current].brandType === 'image' ? (
+                    <img
+                      alt="Brand"
+                      className="block h-auto object-contain w-[180px] md:w-[220px] lg:w-[280px]"
+                      src={slideContents[current].brandSrc}
+                    />
+                  ) : (
+                    <span className="text-white text-[42px] sm:text-[52px] md:text-[68px] lg:text-[88px] font-bold leading-none tracking-tight whitespace-nowrap">
+                      {slideContents[current].brandText}
+                    </span>
+                  )}
+
+
+                  {slideContents[current].titleType === 'image' ? (
+                    <img
+                      alt="Title"
+                      className="block h-auto object-contain w-[160px] md:w-[200px] lg:w-[260px]"
+                      src={slideContents[current].titleSrc}
+                    />
+                  ) : (
+                    <span className="text-[#D9FF00] text-[42px] sm:text-[52px] md:text-[68px] lg:text-[88px] font-bold leading-none tracking-tight whitespace-nowrap">
+                      {slideContents[current].titleText}
+                    </span>
+                  )}
+
+                </div>
+
+                <p className="mt-4 md:mt-10 text-[16px] md:text-[25px] text-white font-poppins font-normal leading-[1.32] tracking-normal max-w-[200px] md:max-w-full">
+                  {slideContents[current].subtitle}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </main> */}
+
         <main ref={contentRef} className="relative z-10 flex flex-col justify-center flex-grow px-8 md:px-16 lg:px-24">
-          <div className="max-w-5xl mb-10 md:mb-30">
-            <div className="py-2 md:py-6 flex flex-col md:flex-row items-start md:items-center justify-start gap-1 md:gap-2 reveal-text -ml-[4px]">
-              <img
-                alt="Ilaan"
-                className="block h-auto object-contain w-[180px] md:w-[200px] md:max-w-[320px] lg:max-w-[420px]"
-                src={ilaanTextImage}
-              />
-              <img
-                alt="Studio"
-                className="block h-auto object-contain w-[160px] md:w-[180px] md:max-w-[280px] lg:max-w-[360px]"
-                src={studioTextImage}
-              />
-            </div>
+          <div className="max-w-5xl mb-10 md:mb-30 reveal-text">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+              >
+                <div className="py-2 md:py-4 flex flex-row items-center justify-start gap-3 md:gap-3 lg:gap-4 -ml-[4px]">
 
-            <p className="mt-4 md:mt-10 text-[16px] md:text-[25px] text-white font-poppins font-normal leading-[1.32] tracking-normal reveal-text max-w-[200px] md:max-w-full">
-              Creative &amp; Branding Solutions
-            </p>
+                  {/* Brand */}
+                  <span className="font-falcon text-white text-[95px] font-bold leading-none tracking-tight whitespace-nowrap">
+                    {slideContents[current].brandText}
+                  </span>
 
-            {/* <div className="mt-6 md:mt-10 reveal-text">
-              <button className="flex items-center justify-center px-8 py-3 md:px-12 md:py-4 bg-[#D9FF00] text-black font-semibold rounded-full hover:bg-[#c4e600] transition-all duration-300 text-[14px] md:text-lg shadow-md hover:scale-105 active:scale-95">
-                Learn More
-              </button>
-            </div> */}
+                  {/* Title */}
+                  <span className="font-falcon text-[#D9FF00] text-[95px] font-bold leading-none tracking-tight whitespace-nowrap">
+                    {slideContents[current].titleText}
+                  </span>
+
+                </div>
+
+                <p className="mt-4 md:mt-10 text-[16px] md:text-[25px] text-white font-poppins font-normal leading-[1.32] tracking-normal max-w-[200px] md:max-w-full">
+                  {slideContents[current].subtitle}
+                </p>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </main>
 
